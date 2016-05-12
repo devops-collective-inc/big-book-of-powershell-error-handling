@@ -123,5 +123,5 @@ That covers all of the techniques you can use to either control error reporting 
 - $LASTEXITCODE contains the exit code of external executables. An exit code of zero usually indicates success, but that's up to the author of the program.
 - $? can tell you whether the previous command was successful, though you have to be careful about using it with external commands, if they don't follow the convention of using an exit code of zero as an indicator of success. You also need to make sure you check the contents of $? immediately after the command you are interested in.
 
-![image012.png](images/image012.png)
+
 
