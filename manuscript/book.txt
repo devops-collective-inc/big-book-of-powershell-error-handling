@@ -1,7 +1,7 @@
-About.txt
-introduction.txt
-powershell-error-handling-basics.txt
-controlling-error-reporting-behavior-and-intercepting-errors.txt
-analysis-of-error-handling-test-results.txt
-putting-it-all-together.txt
-afterword.txt
+About.md
+introduction.md
+powershell-error-handling-basics.md
+controlling-error-reporting-behavior-and-intercepting-errors.md
+analysis-of-error-handling-test-results.md
+putting-it-all-together.md
+afterword.md
