@@ -13,6 +13,8 @@ Despite the title, this is actually a very small, concise book designed to help 
  
 This guide is released under the Creative Commons Attribution-NoDerivs 3.0 Unported License. The authors encourage you to redistribute this file as widely as possible, but ask that you do not modify the document.
 
+**Getting the code** Sample code, along with a spreadsheet documenting known exception class names, can be found at https://github.com/devops-collective-inc/big-book-of-powershell-error-handling/tree/master/attachments. 
+
 **Was this book helpful?** The author(s) kindly ask(s) that you make a tax-deductible (in the US; check your laws if you live elsewhere) donation of any amount to [The DevOps Collective](https://devopscollective.org/donate/) to support their ongoing work.
 
 **Check for Updates!** Our ebooks are often updated with new and corrected content. We make them available in three ways:
