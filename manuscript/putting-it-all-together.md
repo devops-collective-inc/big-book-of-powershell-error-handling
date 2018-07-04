@@ -23,7 +23,7 @@ Before you can decide how best to handle the error(s) from a particular command,
 
 Figure 4.2: Identifying Terminating errors.
 
-Ironically, this was a handy place both to use the Trap statement and to set $ErrorActionPreference to SilentlyContinue, both things that I would almost never do in an enterprise script. As you can see in figure 4.1, Get-Acl produces terminating exceptions when the file exists, but the cmdlet cannot read the ACL. Get-Item and Get-Acl both produce non-terminating errors if the file doesn't exist.
+Ironically, this was a handy place both to use the Trap statement and to set $ErrorActionPreference to SilentlyContinue, both things that I would almost never do in an enterprise script. As you can see in figure 4.2, Get-Acl produces terminating exceptions when the file exists, but the cmdlet cannot read the ACL. Get-Item and Get-Acl both produce non-terminating errors if the file doesn't exist.
 
 Going through this sort of trial and error can be a time-consuming process, though. You need to come up with the different ways a command might fail, and then reproduce those conditions to see if the resulting error was terminating or non-terminating. As a result of how annoying this can be, in addition to this ebook, the GitHub repository will contain a spreadsheet with a list of known Terminating errors from cmdlets. That will be a living document, possibly converted to a wiki at some point. While it will likely never be a complete reference, due to the massive number of PowerShell cmdlets out there, it's a lot better than nothing.
 
