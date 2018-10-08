@@ -102,7 +102,9 @@ Figure 2.7: Using $LASTEXITCODE.
 
 ## The $? Variable
 
-The $? variable is a Boolean value that is automatically set after each PowerShell statement or pipeline finishes execution. It should be set to True if the previous command was successful, and False if there was an error. If the previous command was a call to a native exe, $? will be set to True if the $LASTEXITCODE variable equals zero, and False otherwise. When the previous command was a PowerShell statement, $? will be set to False if any errors occurred (even if ErrorAction was set to SilentlyContinue or Ignore.)
+The $? variable is a Boolean value that is automatically set after each PowerShell statement or pipeline finishes execution. It should be set to True if the previous command was successful, and False if there was an error.  
+When the previous command was a PowerShell statement, $? will be set to False if any errors occurred (even if ErrorAction was set to SilentlyContinue or Ignore).  
+If the previous command was a call to a native exe, $? will be set to False if the $LASTEXITCODE variable does not equal zero. If the $LASTEXITCODE variable equals zero, then in theory $? should be set to True. However, if the native command writes something to the standard error stream then $? could be set to False even if $LASTEXITCODE equals zero. For example, the PowerShell ISE will create and append error objects to $Error for standard error stream output and consequently $? will be False regardless of the value of $LASTEXITCODE. Redirecting the standard error stream into a file will result in a similar behavior even when the PowerShell host is the regular console. So it is probably best to test the behavior in your specific environment if you want to rely on $? being set correctly to True.
 
 Just be aware that the value of this variable is reset after every statement. You must check its value immediately after the command you're interested in, or it will be overwritten (probably to True). Figure 2.8 demonstrates this behavior. The first time $? is checked, it is set to False, because the Get-Item encountered an error. The second time $? was checked, it was set to True, because the previous command was successful; in this case, the previous command was "$?" from the first time the variable's value was displayed.
 
@@ -121,7 +123,7 @@ That covers all of the techniques you can use to either control error reporting 
 * Using the ErrorAction parameter, you can change how PowerShell cmdlets and functions report non-terminating errors. Setting this to Stop causes them to become terminating errors instead, which can be intercepted with Try/Catch/Finally or Trap.
 * $ErrorActionPreference works like ErrorAction, except it can also affect PowerShell's behavior when a terminating error occurs, even if those errors came from a .NET method instead of a cmdlet.
 * $LASTEXITCODE contains the exit code of external executables. An exit code of zero usually indicates success, but that's up to the author of the program.
-* $? can tell you whether the previous command was successful, though you have to be careful about using it with external commands, if they don't follow the convention of using an exit code of zero as an indicator of success. You also need to make sure you check the contents of $? immediately after the command you are interested in.
+* $? can tell you whether the previous command was successful, though you have to be careful about using it with external commands. If they don't follow the convention of using an exit code of zero as an indicator of success or if they write to the standard error stream then the resulting value in $? may not be what you expect. You also need to make sure you check the contents of $? immediately after the command you are interested in.
 
 
 
